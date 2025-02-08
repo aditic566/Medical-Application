@@ -20,6 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collection;
 
-public class JwtRequestFilter extends OncePerRequestFilter {
+public class JwtRequestFilter  {
     
 }

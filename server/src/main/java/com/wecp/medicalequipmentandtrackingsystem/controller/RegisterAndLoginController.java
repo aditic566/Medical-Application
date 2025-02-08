@@ -18,18 +18,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-
+@RestController
 public class RegisterAndLoginController {
-
-
+    @Autowired
+    private UserService userService;
     @PostMapping("/api/user/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         // register user and return the registered user with status code 201 created
+        return new ResponseEntity<>(userService.createUser(user),HttpStatus.CREATED);
     }
 
     @PostMapping("/api/user/login")
     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
         // login user and return the login response with status code 200 ok
-        // if authentication fails, return status code 401 unauthorized
+         // If authentication fails, return status code 401 unauthorized
+         return new ResponseEntity<>(null);
+        
     }
 }
