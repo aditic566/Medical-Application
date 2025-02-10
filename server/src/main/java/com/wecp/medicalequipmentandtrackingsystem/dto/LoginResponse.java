@@ -23,12 +23,9 @@ public class LoginResponse {
         this.role = role;
     }
 
-<<<<<<< HEAD
     public LoginResponse(String token2, String role2, Long userId) {
     }
 
-=======
->>>>>>> 42a015648b7a6b71865b830024cb300e6a77edf5
     public String getToken() {
         return token;
     }

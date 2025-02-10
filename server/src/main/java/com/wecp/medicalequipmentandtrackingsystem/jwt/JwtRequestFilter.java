@@ -8,10 +8,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
-<<<<<<< HEAD
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-=======
->>>>>>> 42a015648b7a6b71865b830024cb300e6a77edf5
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
@@ -23,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collection;
-<<<<<<< HEAD
  
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
@@ -71,9 +67,4 @@ public class JwtRequestFilter extends OncePerRequestFilter {
  
         chain.doFilter(request, response);
     }
-=======
-
-public class JwtRequestFilter  {
-    
->>>>>>> 42a015648b7a6b71865b830024cb300e6a77edf5
 }

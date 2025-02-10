@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-<<<<<<< HEAD
  
 @Component
 public class JwtUtil {
@@ -91,8 +90,3 @@ public class JwtUtil {
  
 }
  
-=======
-public class JwtUtil {
-
-}
->>>>>>> 42a015648b7a6b71865b830024cb300e6a77edf5
