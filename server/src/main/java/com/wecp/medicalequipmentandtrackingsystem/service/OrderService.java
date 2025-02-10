@@ -25,6 +25,7 @@ public class OrderService {
         Equipment equipment = equipmentRepository.findById(equipmentId)
                 .orElseThrow(() -> new EntityNotFoundException("Equipment not found"));
         order.setEquipment(equipment);
+        order.setStatus("PLACED");
         return orderRepository.save(order);
     }
 

@@ -23,8 +23,6 @@ public class LoginResponse {
         this.role = role;
     }
 
-    public LoginResponse(String token2, String role2, Long userId) {
-    }
 
     public String getToken() {
         return token;
