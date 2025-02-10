@@ -29,6 +29,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './schedule-maintenance.component.html',
   styleUrls: ['./schedule-maintenance.component.scss']
 })
+
 export class ScheduleMaintenanceComponent implements OnInit {
   itemForm: FormGroup;
   isLoading: boolean = false;
@@ -74,6 +75,7 @@ export class ScheduleMaintenanceComponent implements OnInit {
           }
         );
       }
+
 
     } else {
       this.errorMessage = 'Please fill in all required fields correctly.';

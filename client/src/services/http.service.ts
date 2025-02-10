@@ -12,6 +12,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class HttpService {
+  
   public serverName = environment.apiUrl;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
@@ -72,6 +73,19 @@ export class HttpService {
 
   createHospital(data: any): Observable<any> {
     return this.http.post<any>(`${this.serverName}/hospital/create`, data, this.getHttpOptions());
+  }
+  
+  getMaintenance():Observable<any>{
+    return this.http.get<any>(this.serverName+`/api/technician/maintenance`);
+  }
+
+  updateMaintenance(maintenanceId:number,maintenance:any):Observable<any>{
+    return this.http.put<any>(this.serverName+`/api/technician/maintenance/update/${maintenanceId}`, maintenance);
+  }
+
+  getHospital():Observable<any>{
+    return this.http.get<any>(this.serverName+`/api/hospitals`);
+
   }
 }
 
