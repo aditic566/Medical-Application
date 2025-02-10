@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 
 
 
@@ -39,3 +40,36 @@ public class UserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
     }
 }
+=======
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public User createUser(User user) {
+        if (userRepository.existsByUsername(user.getUsername())) {
+            throw new RuntimeException("Username already exists");
+        }
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new RuntimeException("Email already exists");
+        }
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+
+    // public UserDetails loadUserByUsername(String username) {
+    //     Supplier user = supplierRepository.findByUsername(username);
+    //     if (user == null) {
+    //         throw new UsernameNotFoundException("User not found");
+    //     }
+    //     return new org.springframework.security.core.userdetails.User(
+    //             user.getUsername(),
+    //             user.getPassword(),
+    //             new ArrayList<>()
+    //     );
+    // }
+}
+>>>>>>> 42a015648b7a6b71865b830024cb300e6a77edf5

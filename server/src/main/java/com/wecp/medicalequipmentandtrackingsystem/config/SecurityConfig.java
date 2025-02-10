@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
+<<<<<<< HEAD
 // public class SecurityConfig {
 
 
@@ -114,4 +115,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         public AuthenticationManager authenticationManagerBean() throws Exception {
                 return super.authenticationManagerBean();
         }
+=======
+public class SecurityConfig {
+    
+>>>>>>> 42a015648b7a6b71865b830024cb300e6a77edf5
 }
