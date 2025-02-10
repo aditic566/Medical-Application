@@ -9,6 +9,17 @@ import { AuthService } from './auth.service';
 })
 export class HttpService {
   public serverName=environment.apiUrl;
-//todo: complete missing code.. 
-  
+  constructor(private http:HttpClient){}
+  //todo: complete missing code.. 
+  getMaintenance():Observable<any>{
+    return this.http.get<any>(this.serverName+`/api/technician/maintenance`);
+  }
+
+  updateMaintenance(maintenanceId:number,maintenance:any):Observable<any>{
+    return this.http.put<any>(this.serverName+`/api/technician/maintenance/update/${maintenanceId}`, maintenance);
+  }
+
+  getHospital():Observable<any>{
+    return this.http.get<any>(this.serverName+`/api/hospitals`);
+  }
 }
