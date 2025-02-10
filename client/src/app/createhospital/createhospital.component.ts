@@ -11,7 +11,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./createhospital.component.scss']
 })
 export class CreatehospitalComponent implements OnInit {
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
  
-  //todo: Complete missing code..
   
 }
