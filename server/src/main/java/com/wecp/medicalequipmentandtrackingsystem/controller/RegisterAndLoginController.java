@@ -76,6 +76,7 @@ public class RegisterAndLoginController {
         Long userId = foundUser.getId();
         System.out.println("User Roles: " + role);
         return null;
+        // Hello World!!
     }
 }
 
