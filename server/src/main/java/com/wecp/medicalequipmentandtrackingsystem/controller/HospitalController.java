@@ -45,6 +45,14 @@ public class HospitalController {
         return new ResponseEntity<>(hospitals, HttpStatus.OK);
     }
 
+        @PostMapping("/api/hospital/order")
+    public ResponseEntity<Order> placeOrder(
+            @RequestParam Long equipmentId,
+            @RequestBody Order order) {
+        Order placedOrder = orderService.placeOrder(equipmentId, order);
+        return new ResponseEntity<>(placedOrder, HttpStatus.CREATED);
+    }
+
     @PostMapping("/api/hospital/equipment")
     public ResponseEntity<Equipment> addEquipment(@RequestParam Long hospitalId, @RequestBody Equipment equipment) {
         Equipment addedEquipment = equipmentService.addEquipment(hospitalId, equipment);
@@ -61,11 +69,5 @@ public class HospitalController {
     public ResponseEntity<Maintenance> scheduleMaintenance(@RequestParam Long equipmentId, @RequestBody Maintenance maintenance) {
         Maintenance scheduledMaintenance = maintenanceService.scheduleMaintenance(equipmentId, maintenance);
         return new ResponseEntity<>(scheduledMaintenance, HttpStatus.CREATED);
-    }
-
-    @PostMapping("/api/hospital/order")
-    public ResponseEntity<Order> placeOrder(@RequestParam Long equipmentId, @RequestBody Order order) {
-        Order placedOrder = orderService.placeOrder(equipmentId, order);
-        return new ResponseEntity<>(placedOrder, HttpStatus.CREATED);
     }
 }

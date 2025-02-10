@@ -69,9 +69,9 @@ public class JwtUtil {
                 .setSigningKey(secret)
                 .parseClaimsJws(token)
                 .getBody();
-        System.out.println(claims);
-        //return claims.getSubject();
-        return claims.get("username", String.class);
+        // System.out.println(claims);
+        return claims.getSubject();
+        // return claims.get("username", String.class);
     }
  
     public boolean isTokenExpired(String token) {

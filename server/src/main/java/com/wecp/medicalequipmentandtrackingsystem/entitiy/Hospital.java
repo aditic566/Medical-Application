@@ -20,7 +20,10 @@ public class Hospital {
     @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Equipment> equipmentList;
-
+// {
+//     "name":"Hospital 1",
+//     "location":"pune"
+// }
     // Constructors, Getters, and Setters
     public Hospital() {}
 

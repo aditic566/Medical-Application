@@ -17,29 +17,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
-// public class RegisterAndLoginController {
-
-
-//     @PostMapping("/api/user/register")
-//     public ResponseEntity<User> registerUser(@RequestBody User user) {
-//         // register user and return the registered user with status code 201 created
-//     }
-
-//     @PostMapping("/api/user/login")
-//     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
-//         // login user and return the login response with status code 200 ok
-//         // if authentication fails, return status code 401 unauthorized
-//     }
-// }
 
 
 
 @RestController
 public class RegisterAndLoginController {
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -49,21 +36,14 @@ public class RegisterAndLoginController {
 
     @PostMapping("/api/user/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
-        // System.out.println("in here");
+   
         User registeredUser = userService.registerUser(user);
         return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
 
     @PostMapping("/api/user/login")
-    public ResponseEntity<User> loginUser(@RequestBody User user) {
-        // User existingUser = userService.getUserByUsername(user.getUsername());
-
-        // if (existingUser == null || !existingUser.getPassword().equals(user.getPassword())) {
-        //     throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username or password");
-        // }
-
-        // return ResponseEntity.ok(existingUser);
-
+    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest user) {
+     
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         } catch(AuthenticationException e) {
@@ -71,12 +51,12 @@ public class RegisterAndLoginController {
         }
         final UserDetails userDetails = userService.loadUserByUsername(user.getUsername());
         User foundUser = userService.getUserByUsername(user.getUsername());
+
         final String token = jwtUtil.generateToken(user.getUsername());
-        String role = foundUser.getRole();
-        Long userId = foundUser.getId();
-        System.out.println("User Roles: " + role);
-        return null;
-        // Hello World!!
+        System.out.println(token);
+       LoginResponse loginResponse =  new LoginResponse(token,foundUser.getUsername(),foundUser.getEmail(),foundUser.getRole());
+       return ResponseEntity.ok(loginResponse);
+     
     }
 }
 
