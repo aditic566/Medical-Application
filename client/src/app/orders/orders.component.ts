@@ -10,11 +10,12 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
+  //todo: complete missing code..
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
   
 }
- //todo: complete missing code..
+ 
  
  
