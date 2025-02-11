@@ -26,10 +26,9 @@
             <label for="role">Role</label>
             <select id="role" name="role" formControlName="role" class="form-control">
                 <option value="">Select Role</option>
-                <option value="Hospital">Hospital</option>
-                <option value="Technician">Technician</option>
-                <option value="Supplier">Supplier</option>
-                <option value="user">User</option>
+                <option value="HOSPITAL">HOSPITAL</option>
+                <option value="TECHNICIAN">TECHNICIAN</option>
+                <option value="SUPPLIER">SUPPLIER</option>
             </select>
             <div *ngIf="itemForm.get('role')?.invalid && itemForm.get('role')?.touched" class="text-danger">
                 Role is required

@@ -46,6 +46,7 @@ public class RegisterAndLoginController {
      
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+            System.out.println("in try");
         } catch(AuthenticationException e) {
              throw new ResponseStatusException(HttpStatus.UNAUTHORIZED , "Invalid username or password" ,e);
         }
