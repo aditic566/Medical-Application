@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.router.navigate(['/dashboard']); // *** bypass login
+    // this.router.navigate(['/dashboard']); 
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
 
@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
           // Save token and navigate to the dashboard
           this.authService.saveToken(response.token);
           this.authService.setRole(response.role);
+          this.authService.setLoginStatus();
           this.router.navigate(['/dashboard']);
         },
         (error: any) => {

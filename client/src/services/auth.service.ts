@@ -9,8 +9,11 @@ export class AuthService {
 
   private token: string | null = null;
   private isLoggedIn: boolean = false;
+  
 
-  constructor() { }
+  constructor() { 
+    console.log("in auth servie");
+  }
 
   // Method to save token received from login
   saveToken(token: string) {
@@ -32,6 +35,10 @@ export class AuthService {
   // Method to retrieve login status
   get getLoginStatus(): boolean {
     return this.isLoggedIn;
+  }
+
+  setLoginStatus() : any {
+    this.isLoggedIn = true;
   }
 
   getToken(): string | null {

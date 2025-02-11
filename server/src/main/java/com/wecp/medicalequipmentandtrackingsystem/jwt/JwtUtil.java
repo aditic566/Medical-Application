@@ -14,17 +14,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
- 
 @Component
 public class JwtUtil {
  
     private UserRepository userRepository;
-
-    
  
-    // public JwtUtil() {
-    // }
-
     @Autowired
     public JwtUtil(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -69,9 +63,9 @@ public class JwtUtil {
                 .setSigningKey(secret)
                 .parseClaimsJws(token)
                 .getBody();
-        // System.out.println(claims);
-        return claims.getSubject();
-        // return claims.get("username", String.class);
+        System.out.println(claims);
+        //return claims.getSubject();
+        return claims.get("username", String.class);
     }
  
     public boolean isTokenExpired(String token) {
@@ -89,4 +83,3 @@ public class JwtUtil {
     }
  
 }
- 
