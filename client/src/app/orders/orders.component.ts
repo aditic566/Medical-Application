@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -10,12 +8,66 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  //todo: complete missing code..
+
+  showError: boolean = false;
+  errorMessage: any;
+  showMessage: any;
+  responseMessage: any;
+  orderList: any[] = [];
+  statusModel: any = { newStatus: null };
+  roleName: string | null | undefined;
+
+  constructor(
+    private httpService: HttpService,
+    private authService: AuthService
+  ) { }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.roleName = this.authService.getRole;
+    if (this.roleName === 'SUPPLIER') {
+      this.getOrders();
+    }
   }
-  
+
+  getOrders(): void {
+    this.httpService.getorders().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.orderList = data;
+      },
+      error: (error) => {
+        this.showError = true;
+        this.errorMessage = error.error.message || 'Failed to load orders';
+      }
+    });
+  }
+
+  viewDetails(details: any): void {
+    // Placeholder for viewing order details
+    console.log(details);
+  }
+
+  edit(value: any): void {
+    this.statusModel.cargoId = value.id;
+  }
+
+  update(order: any): void {
+    if (order.status) {
+      this.httpService.UpdateOrderStatus(order.status, order.id).subscribe({
+        next: () => {
+          this.showMessage = true;
+          this.responseMessage = 'Order status updated successfully!';
+          this.getOrders();
+          setTimeout(() => this.showMessage = false, 3000);
+        },
+        error: (error) => {
+          this.showError = true;
+          this.errorMessage = error.error.message || 'Failed to update order status';
+        }
+      });
+    }
+  }
 }
- 
- 
- 
+
+
+

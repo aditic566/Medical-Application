@@ -16,7 +16,7 @@ export class AppComponent {
     this.IsLoggin=authService.getLoginStatus;
     console.log(this.IsLoggin);
     this.roleName=authService.getRole;
-    if(this.IsLoggin==false)
+    if(!this.IsLoggin)
     {
       this.router.navigateByUrl('/login'); 
     }

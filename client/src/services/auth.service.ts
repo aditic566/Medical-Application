@@ -13,6 +13,7 @@ export class AuthService {
 
   constructor() { 
     console.log("in auth servie");
+    this.loadToken();
   }
 
   // Method to save token received from login
@@ -56,6 +57,13 @@ export class AuthService {
     this.isLoggedIn = false;
     localStorage.removeItem('token');
     localStorage.removeItem('role');
+  }
+  private loadToken(){
+    const token = localStorage.getItem('token');
+    if(token){
+      this.token=token;
+      this.isLoggedIn=true;
+    }
   }
 }
 

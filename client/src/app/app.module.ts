@@ -27,8 +27,6 @@ import { OrdersComponent } from './orders/orders.component';
     LoginComponent,
       RegistrationComponent,
       DashbaordComponent,
-  
-    
       CreatehospitalComponent,
       ScheduleMaintenanceComponent,
       RequestequipmentComponent,
