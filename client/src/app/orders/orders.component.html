@@ -1,1 +1,108 @@
-//todo: complete missing code..
+<!-- 
+
+
+<div *ngIf="roleName == 'SUPPLIER'" class="orders-container">
+    <h2>Equipment Orders</h2>
+
+    <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+    </div>
+
+    <div *ngIf="success" class="alert alert-success">
+        {{ success }}
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Equipment</th>
+                    <th>Hospital</th>
+                    <th>Quantity</th>
+                    <th>Order Date</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orderList">
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.equipment?.name }}</td>
+                    <td>{{ order.equipment?.hospital?.name }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.orderDate | date }}</td>
+                    <td>{{ order.description }}</td>
+                    <td [class]="order.status.toLowerCase()">{{ order.status }}</td>
+                    <td>
+                        <select [disabled]="order.status === 'DELIVERED'" class="status-select"
+                            [(ngModel)]="order.status" (change)="update(order)">
+                            <option value="">Update Status</option>
+                            <option value="PROCESSING">Processing</option>
+                            <option value="SHIPPED">Shipped</option>
+                            <option value="DELIVERED">Delivered</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="orderList.length === 0" class="no-orders">
+        <p>No orders found</p>
+    </div>
+</div> -->
+
+
+<div *ngIf="roleName == 'SUPPLIER'" class="orders-container"></div>
+  <h2>Equipment Orders</h2>
+
+  <div *ngIf="showError" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="showMessage" class="alert alert-success">
+    {{ responseMessage }}
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Equipment</th>
+          <th>Hospital</th>
+          <th>Quantity</th>
+          <th>Order Date</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orderList">
+          <td>{{ order.id }}</td>
+          <td>{{ order.equipment?.name }}</td>
+          <td>{{ order.equipment?.hospital?.name }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>{{ order.orderDate | date }}</td>
+          <td>{{ order.description }}</td>
+          <td [class]="order.status.toLowerCase()">{{ order.status }}</td>
+          <td>
+            <select [disabled]="order.status === 'DELIVERED'" class="status-select"
+                    [(ngModel)]="order.status" (change)="update(order)">
+              <option value="">Update Status</option>
+              <option value="PROCESSING">Processing</option>
+              <option value="SHIPPED">Shipped</option>
+              <option value="DELIVERED">Delivered</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="orderList.length === 0" class="no-orders">
+    <p>No orders found</p>
+  </div>

@@ -25,24 +25,22 @@ import { OrdersComponent } from './orders/orders.component';
   declarations: [
     AppComponent,
     LoginComponent,
-      RegistrationComponent,
-      DashbaordComponent,
-  
-    
-      CreatehospitalComponent,
-      ScheduleMaintenanceComponent,
-      RequestequipmentComponent,
-      MaintenanceComponent,
-      OrdersComponent
+    RegistrationComponent,
+    DashbaordComponent,
+    CreatehospitalComponent,
+    ScheduleMaintenanceComponent,
+    RequestequipmentComponent,
+    MaintenanceComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule
   ],
-  providers: [HttpService,HttpClientModule ],
+  providers: [HttpService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
