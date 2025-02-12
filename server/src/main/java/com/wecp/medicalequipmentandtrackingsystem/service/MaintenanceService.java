@@ -37,6 +37,7 @@ public class MaintenanceService {
                 .orElseThrow(() -> new EntityNotFoundException("Maintenance not found"));
         maintenance.setDescription(updatedMaintenance.getDescription());
         maintenance.setStatus(updatedMaintenance.getStatus());
+        maintenance.setCompletedDate(updatedMaintenance.getCompletedDate());
         return maintenanceRepository.save(maintenance);
     }
 }

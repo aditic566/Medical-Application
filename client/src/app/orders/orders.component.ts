@@ -32,8 +32,9 @@ export class OrdersComponent implements OnInit {
   getOrders(): void {
     this.httpService.getorders().subscribe({
       next: (data) => {
-        console.log(data);
         this.orderList = data;
+        console.log(this.orderList);
+
       },
       error: (error) => {
         this.showError = true;
@@ -41,16 +42,13 @@ export class OrdersComponent implements OnInit {
       }
     });
   }
-
-  viewDetails(details: any): void {
-    // Placeholder for viewing order details
-    console.log(details);
-  }
-
+  
+  
+  
   edit(value: any): void {
     this.statusModel.cargoId = value.id;
   }
-
+  
   update(order: any): void {
     if (order.status) {
       this.httpService.UpdateOrderStatus(order.status, order.id).subscribe({

@@ -30,6 +30,7 @@
     "@angular/cli": "^15.2.11",
     "@angular/compiler-cli": "^14.2.0",
     "@ngrx/schematics": "^14.2.0",
+    "@types/bootstrap": "^5.2.10",
     "@types/jasmine": "~4.0.0",
     "concurrently": "^8.0.1",
     "jasmine-core": "~4.3.0",

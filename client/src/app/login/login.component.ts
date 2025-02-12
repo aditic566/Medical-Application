@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  itemForm: FormGroup;
   error: string = '';
 
 
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private httpService: HttpService
   ) {
-    this.loginForm = this.fb.group({
+    this.itemForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     // this.router.navigate(['/dashboard']); 
-    if (this.loginForm.valid) {
-      const loginData = this.loginForm.value;
+    if (this.itemForm.valid) {
+      const loginData = this.itemForm.value;
 
       this.httpService.login(loginData).subscribe(
         (response: any) => {

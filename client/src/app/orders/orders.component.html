@@ -87,7 +87,7 @@
           <td>{{ order.equipment?.hospital?.name }}</td>
           <td>{{ order.quantity }}</td>
           <td>{{ order.orderDate | date }}</td>
-          <td>{{ order.description }}</td>
+          <td>{{ order.equipment.description }}</td>
           <td [class]="order.status.toLowerCase()">{{ order.status }}</td>
           <td>
             <select [disabled]="order.status === 'DELIVERED'" class="status-select"
