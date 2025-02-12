@@ -46,18 +46,13 @@
     <h3>Maintenance List</h3>
     <ul class="list-group">
       <li *ngFor="let maintenance of maintenanceList" class="list-group-item">
-        <strong>Scheduled Date:</strong> {{ maintenance.scheduledDate  | date}}<br>
+        <strong>Scheduled Date:</strong> {{ maintenance.scheduledDate }}<br>
         <strong>Completed Date:</strong> {{ maintenance.completedDate }}<br>
         <strong>Description:</strong> {{ maintenance.description }}<br>
         <strong>Status:</strong> {{ maintenance.status }}
       </li>
     </ul>
   </div>
-  
-<!-- 
-//update maintenance this already done
-
-//also check once  -->
 
 
 

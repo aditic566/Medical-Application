@@ -1,26 +1,3 @@
-
-
- 
-// Variable:
-// showError:boolean=false;
-// errorMessage:any;
-// showMessage: any;
-// responseMessage: any;
-// orderList: any=[]; ***
-// statusModel:any={newStatus:null} ***
- 
-// Method:
-// Constructor() ***
-// ngOnInit() ***
-// getOrders() ***
-// viewDetails() ***
-// edit()
-// update()
- 
- 
- 
- 
- 
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';

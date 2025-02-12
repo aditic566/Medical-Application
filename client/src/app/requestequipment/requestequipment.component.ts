@@ -61,9 +61,6 @@ export class RequestequipmentComponent implements OnInit {
     if (this.itemForm.valid) {
       this.showError = false;
       this.showMessage = false;
-      // console.log('eqID:',this.itemForm.get('equipmentId')?.value);
- 
- 
       this.httpService.orderEquipment(this.itemForm.value, this.itemForm.get('equipmentId')?.value).subscribe(
         response => {
           this.responseMessage = 'Equipment ordered successfully!';
