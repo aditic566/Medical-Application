@@ -9,7 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-public class HospitalService {
 
-    
+
+@Service
+public class HospitalService {
+    @Autowired
+    private HospitalRepository hospitalRepository;
+
+    public Hospital createHospital(Hospital hospital) {
+        return hospitalRepository.save(hospital);
+    }
+
+    public List<Hospital> getAllHospitals() {
+        return hospitalRepository.findAll();
+    }
 }

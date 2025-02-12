@@ -12,6 +12,23 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 
+
+@Service
 public class EquipmentService {
-    
+    @Autowired
+    private EquipmentRepository equipmentRepository;
+
+    @Autowired
+    private HospitalRepository hospitalRepository;
+
+    public Equipment addEquipment(Long hospitalId, Equipment equipment) {
+        Hospital hospital = hospitalRepository.findById(hospitalId)
+                .orElseThrow(() -> new EntityNotFoundException("Hospital not found"));
+        equipment.setHospital(hospital);
+        return equipmentRepository.save(equipment);
+    }
+
+    public List<Equipment> getAllEquipmentsOfHospital(Long hospitalId) {
+        return equipmentRepository.findByHospitalId(hospitalId);
+    }
 }

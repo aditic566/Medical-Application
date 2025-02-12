@@ -1,1 +1,25 @@
-//todo: complete missing code..
+<div class="login">
+    <h3>Login</h3>
+
+    <div *ngIf="showError" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+
+    <form [formGroup]="itemForm" (ngSubmit)="onLogin()">
+        <input type="text" name="username" id="username" placeholder="Username" formControlName="username" [(ngModel)]="formModel.username">
+        <div *ngIf="itemForm.get('username')?.errors?.['required'] && itemForm.get('username')?.touched"
+            class="error">
+            Username is required.
+        </div>
+
+        <input type="password" name="password" id="password" placeholder="Password" formControlName="password" [(ngModel)]="formModel.password">
+        <div *ngIf="itemForm.get('password')?.errors?.['required'] && itemForm.get('password')?.touched"
+            class="error">
+            Password is required.
+        </div>
+
+        <button type="submit">Login</button>
+
+        <button (click)="registration()">Register here</button>
+    </form>
+</div>
