@@ -1,8 +1,8 @@
 <div class="row text-center">
-<h1 class="text-capitalize">Medical Equipment & Tracking System</h1>
+    <h1 class="text-capitalize">Medical Equipment & Tracking System</h1>
 </div>
 
-
+<app-hospital-list *ngIf="roleName === 'HOSPITAL'"></app-hospital-list>
 
 <!-- test link  -->
 <!-- <a routerLink="/login" class="btn btn-primary">Maintenance</a>
@@ -20,7 +20,7 @@
 <div class="dashboard">
     <h1>Medical Equipment Management Dashboard</h1>
     <div class="card-container"> -->
-        <!-- <div class="card full-width">
+<!-- <div class="card full-width">
             <div class="card-header">
                 <h3>Hospitals</h3>
                 <button class="btn btn-primary">Add Hospital</button>
@@ -68,7 +68,7 @@
                 </tbody>
             </table>
         </div> -->
-        <!-- <div class="card full-width">
+<!-- <div class="card full-width">
             <div class="card-header">
                 <h3>Equipment (user-hospital)</h3>
                 <button class="btn btn-primary">Add Equipment</button>
@@ -100,7 +100,7 @@
                 </tbody>
             </table>
         </div> -->
-        <!-- <div class="card full-width">
+<!-- <div class="card full-width">
             <div class="card-header">
                 <h3>Maintenance Tasks</h3>
                 <button class="btn btn-primary">Schedule Maintenance</button>
@@ -132,7 +132,7 @@
                 </tbody>
             </table>
         </div> -->
-        <!-- <div class="card full-width">
+<!-- <div class="card full-width">
             <div class="card-header">
                 <h3>Orders (user-supplier)</h3>
                 <button class="btn btn-primary">Request Equipment</button>

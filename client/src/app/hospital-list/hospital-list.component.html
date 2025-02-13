@@ -1,0 +1,113 @@
+<div class="hospital-list-container">
+    <h2>Hospital List</h2>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+
+    <div *ngIf="!showHospitalList && hospitalList.length === 0" class="alert alert-info">
+        No hospitals found
+    </div>
+
+    <table class="table table-bordered table-striped" *ngIf="showHospitalList && hospitalList.length > 0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hospital of hospitalList">
+                <td>{{ hospital.id }}</td>
+                <td>{{ hospital.name }}</td>
+                <td>{{ hospital.location }}</td>
+                <td>
+                    <button (click)="viewHospital(hospital)" class="btn btn-primary btn-sm action-btn">View</button>
+                    <!-- <button (click)="editHospital(hospital)" class="btn btn-warning btn-sm action-btn">Edit</button> -->
+                    <button (click)="deleteHospital(hospital.id)"
+                        class="btn btn-danger btn-sm action-btn">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="!showHospitalList && selectedHospital" class="view-hospital">
+        <h3>View Hospital</h3>
+        <p><strong>ID:</strong> {{ selectedHospital.id }}</p>
+        <p><strong>Name:</strong> {{ selectedHospital.name }}</p>
+        <p><strong>Location:</strong> {{ selectedHospital.location }}</p>
+
+        <button (click)="showAddEquipmentForm = !showAddEquipmentForm" class="btn btn-success btn-sm">Add
+            Equipment</button>
+
+
+
+
+
+
+
+        <div *ngIf="showAddEquipmentForm">
+            <!-- Add Equipment Form -->
+            <form [formGroup]="equipmentForm" (ngSubmit)="addEquipment()">
+                <div class="form-group">
+                    <label for="equipmentName">Equipment Name</label>
+                    <input type="text" id="equipmentName" formControlName="equipmentName" class="form-control">
+                    <div *ngIf="equipmentForm.get('equipmentName')?.errors?.['required'] && equipmentForm.get('equipmentName')?.touched"
+                        class="error">
+                        Equipment name is required
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" formControlName="description"
+                        class="form-control"></textarea>
+                    <div *ngIf="equipmentForm.get('description')?.errors?.['required'] && equipmentForm.get('description')?.touched"
+                        class="error">
+                        Description canot be empty.
+                    </div>
+                </div>
+
+                <input type="hidden" id="hospitalId" formControlName="hospitalId" value="{{hospitalId}}"
+                    class="form-control">
+
+
+                <button type="submit" class="btn btn-primary btn-sm">Save Equipment</button>
+            </form>
+        </div>
+
+        <h4>Equipment List</h4>
+        <table class="table table-bordered table-striped" *ngIf="equipmentList.length > 0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Equipment Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let equipment of equipmentList">
+                    <td>{{ equipment.id }}</td>
+                    <td>{{ equipment.name }}</td>
+                    <td>{{ equipment.description }}</td>
+                    <td>
+                        <button (click)="editEquipment(equipment)"
+                            class="btn btn-warning btn-sm action-btn">Edit</button>
+                        <button (click)="deleteEquipment(equipment.id)"
+                            class="btn btn-danger btn-sm action-btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="equipmentList.length === 0" class="alert alert-info">
+            No equipment found
+        </div>
+
+        <button (click)="closeView()" class="btn btn-secondary btn-sm">Close</button>
+    </div>
+</div>

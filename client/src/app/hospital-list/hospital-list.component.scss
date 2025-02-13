@@ -1,0 +1,38 @@
+.hospital-list-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+ 
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+ 
+.table {
+    width: 100%;
+}
+ 
+.table th,
+.table td {
+    text-align: left;
+    padding: 8px;
+}
+ 
+.alert {
+    margin-top: 20px;
+    text-align: center;
+}
+ 
+.action-btn {
+    margin-right: 5px;
+}
+ 
+.action-btn:last-child {
+    margin-right: 0;
+    /* No margin for the last button */
+}
