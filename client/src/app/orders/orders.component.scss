@@ -1,0 +1,144 @@
+.orders-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .order-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .order-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .order-id {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .status.processing {
+    background-color: #cce5ff;
+    color: #004085;
+  }
+  
+  .status.shipped {
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+  
+  .status.delivered {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .order-details {
+    margin-bottom: 1.5rem;
+  }
+  
+  .order-details p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .order-details strong {
+    color: #333;
+  }
+  
+  .order-actions {
+    text-align: right;
+  }
+  
+  .status-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.9rem;
+  }
+  
+  .status-select:disabled {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+  }
+  
+  .alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+  
+  .alert-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+  }
+  
+  .alert-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+  }
+  
+  .no-orders {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .no-orders p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .orders-container {
+      padding: 1rem;
+    }
+  
+    .orders-grid {
+      grid-template-columns: 1fr;
+    }
+  }

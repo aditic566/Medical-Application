@@ -1,1 +1,89 @@
-//todo: complete missing code..
+<!-- <div class="login">
+    <h3>Login</h3>
+
+    <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+    </div>
+
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+        <input type="text" name="username" id="username" placeholder="Username" formControlName="username">
+        <div *ngIf="itemForm.get('username')?.errors?.['required'] && itemForm.get('username')?.touched"
+            class="error">
+            Username is required.
+        </div>
+
+        <input type="password" name="password" id="password" placeholder="Password" formControlName="password">
+        <div *ngIf="itemForm.get('password')?.errors?.['required'] && itemForm.get('password')?.touched"
+            class="error">
+            Password is required.
+        </div>
+
+        <button type="submit">Login</button>
+
+        <a routerLink="/registration">Register here</a>
+    </form>
+</div> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body class="body">
+    <div class="main-container">
+        <div class="medi-heading">
+            <h1>MediTrack Pro</h1>
+            <p>Streamlining Healthcare Equipment Management</p>
+        </div>
+
+        <div class="login-container">
+            <div class="login-card">
+                <h3>Welcome Back!</h3>
+                <p class="subtitle">Please login to your account</p>
+
+                <div *ngIf="error" class="alert alert-danger">
+                    {{ error }}
+                </div>
+
+                <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="username" formControlName="username" placeholder="Username">
+                            <label for="username">Username</label>
+                        </div>
+                        <div *ngIf="itemForm.get('username')?.errors?.['required'] && itemForm.get('username')?.touched"
+                            class="error">
+                            Username is required.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                                placeholder="Password">
+                            <label for="password">Password</label>
+                            <i class="fas eye-icon" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"
+                                (click)="togglePassword()"></i>
+                        </div>
+                        <div *ngIf="itemForm.get('password')?.errors?.['required'] && itemForm.get('password')?.touched"
+                            class="error">
+                            Password is required.
+                        </div>
+                    </div>
+
+                    <button type="submit" [disabled]="itemForm.invalid" class="login-btn">
+                        <span>Login</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <div class="register-link">
+                        Don't have an account? <a routerLink="/registration">Sign up here</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
