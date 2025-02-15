@@ -34,7 +34,7 @@ export class DashbaordComponent implements OnInit {
     {
       title: 'View Hospitals',
       icon: 'hospital',
-      route: 'view',
+      route: '/hospital-list',
       bgColor: '#34a853',
       stats: '150+ Listed',
       description: 'Monitor and manage registered facilities',
@@ -116,11 +116,13 @@ export class DashbaordComponent implements OnInit {
 
   navigateToCard(card: any) {
     console.log(card);
-    if (card.title === 'View Hospitals') {
-      this.showHospitalList = true;
-    } else {
-      this.router.navigate([card.route]);
-    }
+    this.router.navigate([card.route]);
+
+    // if (card.title === 'View Hospitals') {
+    //   this.showHospitalList = true;
+    // } else {
+    //   this.router.navigate([card.route]);
+    // }
   }
 
   showLogoutModal() {

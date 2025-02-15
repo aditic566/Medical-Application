@@ -210,4 +210,11 @@ export class HospitalListComponent implements OnInit {
     this.router.navigate(['/login']);
     this.closeLogoutModal();
   }
+
+  
+  goBack() {
+    // this.hideModal();
+    this.router.navigate(['/']);
+  }
+
 }
