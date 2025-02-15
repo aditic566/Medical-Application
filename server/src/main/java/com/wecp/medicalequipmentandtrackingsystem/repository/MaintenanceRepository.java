@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 
-public interface MaintenanceRepository  {
-    // extend jpa repository and add custom methods if needed
+
+@Repository
+public interface MaintenanceRepository extends JpaRepository<Maintenance, Long> {
+    List<Maintenance> findByEquipmentId(Long equipmentId);
 }
