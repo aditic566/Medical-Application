@@ -32,7 +32,7 @@
 <body class="body">
     <div class="main-container">
         <div class="medi-heading">
-            <h1>MediTrack Pro</h1>
+            <h1>CARESYNC</h1>
             <p>Streamlining Healthcare Equipment Management</p>
         </div>
 
@@ -64,7 +64,7 @@
                             <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
                                 placeholder="Password">
                             <label for="password">Password</label>
-                            <i class="fas eye-icon" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"
+                            <i class="fas eye-icon" [class.fa-eye]="showPassword" [class.fa-eye-slash]="!showPassword"
                                 (click)="togglePassword()"></i>
                         </div>
                         <div *ngIf="itemForm.get('password')?.errors?.['required'] && itemForm.get('password')?.touched"
