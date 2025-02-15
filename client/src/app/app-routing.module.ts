@@ -13,16 +13,22 @@ import { ScheduleMaintenanceComponent } from './schedule-maintenance/schedule-ma
 import { RequestequipmentComponent } from './requestequipment/requestequipment.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { OrdersComponent } from './orders/orders.component';
+import { EditComponent } from './edit/edit.component';
+import { HospitalListComponent } from './hospital-list/hospital-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'dashboard', component: DashbaordComponent },
-  { path: 'createhospital', component: CreatehospitalComponent },  
-  { path: 'schedule-maintenance', component: ScheduleMaintenanceComponent },  
-  { path: 'requestequipment', component: RequestequipmentComponent },  
-  { path: 'maintenance', component: MaintenanceComponent },  
-  { path: 'orders', component: OrdersComponent },  
+  { path: 'createhospital', component: CreatehospitalComponent },
+  { path: 'schedule-maintenance', component: ScheduleMaintenanceComponent },
+  { path: 'requestequipment', component: RequestequipmentComponent },
+  { path: 'maintenance', component: MaintenanceComponent },
+  { path: 'orders', component: OrdersComponent },
+  { path: 'edit/:id', component: EditComponent },
+  { path: 'hospital-list', component: HospitalListComponent },
+
+
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 
   { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -32,4 +38,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

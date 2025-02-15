@@ -1,3 +1,83 @@
-<div class="row text-center">
-<h1 class="text-capitalize">Medical Equipment & Tracking System</h1>
+
+
+ <div class="dashboard-layout">
+    <!-- Modern Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <i class="fas fa-hospital-alt"></i>
+            <span>CareSync </span>
+        </div>
+
+        <div class="user-profile">
+            <div class="avatar">{{ username?.charAt(0)?.toUpperCase() }}</div>
+            <div class="user-info">
+                <h4>{{ username }}</h4>
+                <span>{{roleName}}</span>
+            </div>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#" class="active">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            <button class="logout-btn" (click)="showLogoutModal()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="page-title">
+                <h1>Dashboard</h1>
+                <p class="current-time">{{ currentTime | date:'EEEE, MMMM d, y, h:mm a' }}</p>
+            </div>
+        </header>
+
+        <div class="dashboard-grid" *ngIf="!showHospitalList" [@cardAnimation]>
+            <ng-container *ngFor="let card of cards">
+                <div class="card" *ngIf="card.role === roleName" [style.--card-color]="card.bgColor" (click)="navigateToCard(card)">
+                    <div class="card-header">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-{{card.icon}}"></i>
+                        </div>
+                        <span class="stats">{{card.stats}}</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>{{card.title}}</h3>
+                        <p>{{card.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="action-btn">
+                            {{card.action}}
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="hospital-list" *ngIf="showHospitalList">
+            <button class="back-btn" (click)="showHospitalList = false">
+                <i class="fas fa-arrow-left"></i>
+                Back
+            </button>
+            <app-hospital-list></app-hospital-list>
+        </div>
+    </main>
+</div>
+
+<!-- Logout Confirmation Modal -->
+<div class="modal-overlay" *ngIf="showLogoutConfirmation">
+  <div class="modal-content">
+    <h2>Logout Confirmation</h2>
+    <p>Are you sure you want to logout?</p>
+    <div class="modal-actions">
+      <button (click)="confirmLogout()" class="btn btn-primary">Yes</button>
+      <button (click)="closeLogoutModal()" class="btn btn-secondary">No</button>
+    </div>
+  </div>
 </div>
