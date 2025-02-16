@@ -1,0 +1,147 @@
+<div class="hospital-list-container">
+
+    <nav class="nav-section">
+        <button class="back-btn" (click)="goBack()">
+            <i class="fas fa-arrow-left"></i> Back
+        </button>
+
+        <h2 class="nav-title">LISTED HOSPITAL</h2>
+    </nav>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+
+    <div *ngIf="hospitalList.length === 0" class="alert alert-info">
+        No hospitals found
+    </div>
+
+    <table class="table table-bordered table-striped" *ngIf="showHospitalList && hospitalList.length > 0">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hospital of hospitalList, let i = index">
+                <td>{{ i+1 }}</td>
+                <td>{{ hospital.name }}</td>
+                <td>{{ hospital.location }}</td>
+                <td>
+                    <button (click)="viewHospital(hospital)" class="btn btn-primary btn-sm action-btn">View</button>
+                    <button (click)="deleteHospital(hospital.id)"
+                        class="btn btn-danger btn-sm action-btn">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="!showHospitalList && selectedHospital" class="view-hospital">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3 class="card-title">Hospital Details</h3>
+            </div>
+            <div class="card-body" style="width: 200px;">
+                <p><strong>ID:</strong> {{ selectedHospital.id }}</p>
+                <p><strong>Name:</strong> {{ selectedHospital.name }}</p>
+                <p><strong>Location:</strong> {{ selectedHospital.location }}</p>
+                <button (click)="showModal('add')" class="btn btn-success btn-sm">Add Equipment</button>
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <h4>Equipment List</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped" *ngIf="equipmentList.length > 0">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Equipment Name</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let equipment of equipmentList, let i = index">
+                            <td>{{ i+1 }}</td>
+                            <td>{{ equipment.name }}</td>
+                            <td>{{ equipment.description }}</td>
+                            <td>
+                                <button (click)="showModal('edit', equipment)"
+                                    class="btn btn-warning btn-sm action-btn">Edit</button>
+                                <button (click)="deleteEquipment(equipment.id)"
+                                    class="btn btn-danger btn-sm action-btn">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="equipmentList.length === 0" class="alert alert-info">
+                    No equipment found
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Add/Edit Equipment Modal -->
+    <div *ngIf="showAddEquipmentForm" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ isEditMode ? 'Edit Equipment' : 'Add Equipment' }}</h5>
+                    <button type="button" style="font-size: 30px;" class="btn close-button" (click)="hideModal()">
+                        <span>×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="equipmentName">Equipment Name</label>
+                            <input type="text" id="equipmentName" formControlName="equipmentName" class="form-control">
+                            <div *ngIf="equipmentForm.get('equipmentName')?.errors?.['required'] && equipmentForm.get('equipmentName')?.touched"
+                                class="error">
+                                Equipment name is required
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" formControlName="description"
+                                class="form-control"></textarea>
+                            <div *ngIf="equipmentForm.get('description')?.errors?.['required'] && equipmentForm.get('description')?.touched"
+                                class="error">
+                                Description cannot be empty.
+                            </div>
+                        </div>
+                        <input type="hidden" id="hospitalId" formControlName="hospitalId" [value]="selectedHospital?.id"
+                            class="form-control">
+                        <button type="submit" class="btn btn-primary btn-sm">{{ isEditMode ? 'Save Changes' : 'Save
+                            Equipment' }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- In your edit modal header -->
+
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" *ngIf="showDeleteConfirmation">
+        <div class="modal-content">
+            <h2>Delete Confirmation</h2>
+            <p>Are you sure you want to delete this item?</p>
+            <div class="modal-actions">
+                <button (click)="confirmDelete()" class="btn btn-primary">Yes</button>
+                <button (click)="closeDeleteModal()" class="btn btn-secondary">No</button>
+            </div>
+        </div>
+    </div>
+</div>

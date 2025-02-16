@@ -20,6 +20,7 @@ import { ScheduleMaintenanceComponent } from './schedule-maintenance/schedule-ma
 import { RequestequipmentComponent } from './requestequipment/requestequipment.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { OrdersComponent } from './orders/orders.component';
+import { HospitalListComponent } from './hospital-list/hospital-list.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,12 @@ import { OrdersComponent } from './orders/orders.component';
     LoginComponent,
       RegistrationComponent,
       DashbaordComponent,
-  
-    
       CreatehospitalComponent,
       ScheduleMaintenanceComponent,
       RequestequipmentComponent,
       MaintenanceComponent,
-      OrdersComponent
+      OrdersComponent,
+      HospitalListComponent
   ],
   imports: [
     BrowserModule,
