@@ -1,1 +1,96 @@
-//todo: complete missing code..
+<div class="main-container">
+    <div class="medi-heading">
+        <h1>MediTrack Pro</h1>
+        <p>Streamlining Healthcare Equipment Management</p>
+    </div>
+    <div class="login-container">
+        <div class="login-card">
+            <h3 style="margin-bottom: 15px;">Create Account</h3>
+            <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="username" formControlName="username" placeholder=" ">
+                        <label for="username">Username</label>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div *ngIf="itemForm.get('username')?.invalid && itemForm.get('username')?.touched" class="error">
+                        Username is required
+                    </div>
+                </div>
+ 
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="password" id="password" formControlName="password" placeholder=" " (input)="checkPasswordStrength()">
+                        <label for="password">Password</label>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="password-strength" *ngIf="itemForm.get('password')?.value">
+                        <div class="strength-meter" [ngClass]="passwordStrengthClass"></div>
+                    </div>
+                    <div class="strength-text" [ngStyle]="{'color': passwordStrengthColor}" *ngIf="itemForm.get('password')?.value">
+                        {{passwordStrengthText}}
+                    </div>
+                    <div *ngIf="itemForm.get('password')?.invalid && itemForm.get('password')?.touched" class="error">
+                        Password is required
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <div class="input-group">
+                        <input type="password" 
+                               id="confirmPassword" 
+                               formControlName="confirmPassword" 
+                               placeholder=" ">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div *ngIf="itemForm.get('confirmPassword')?.invalid && itemForm.get('confirmPassword')?.touched" class="error">
+                        Confirm Password is required
+                    </div>
+                    <div *ngIf="itemForm.hasError('mismatch') && itemForm.get('confirmPassword')?.touched" class="error">
+                        Passwords do not match
+                    </div>
+                </div> -->
+ 
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="email" id="email" formControlName="email" placeholder=" ">
+                        <label for="email">Email</label>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div *ngIf="itemForm.get('email')?.invalid && itemForm.get('email')?.touched" class="error">
+                        Valid email is required
+                    </div>
+                </div>
+ 
+                <div class="form-group">
+                    <div class="input-group">
+                        <select id="role" formControlName="role" required>
+                            <option value="" disabled selected>Select Role</option>
+                            <option value="HOSPITAL">HOSPITAL</option>
+                            <option value="TECHNICIAN">TECHNICIAN</option>
+                            <option value="SUPPLIER">SUPPLIER</option>
+                        </select>
+                        <label for="role">Role</label>
+                        <i class="fas fa-user-tag"></i>
+                    </div>
+                    <div *ngIf="itemForm.get('role')?.invalid && itemForm.get('role')?.touched" class="error">
+                        Role is required
+                    </div>
+                </div>
+ 
+                <button type="submit" [disabled]="itemForm.invalid" class="login-btn">
+                    <span>Register</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+ 
+                <div class="register-link">
+                    Already have an account? <a routerLink="/login">Sign in here</a>
+                </div>
+ 
+                <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+            </form>
+        </div>
+    </div>
+</div>
+ 

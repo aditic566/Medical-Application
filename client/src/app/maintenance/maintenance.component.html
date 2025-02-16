@@ -1,1 +1,176 @@
-//todo: Complete missing code..
+<!-- <div class="container">
+  <h2>Maintenance Management</h2>
+
+  <div *ngIf="showError" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="showMessage" class="alert alert-success">
+    {{ responseMessage }}
+  </div>
+
+  <h3>Maintenance List</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Serial No.</th>
+          <th>Scheduled Date</th>
+          <th>Requested Equipment</th>
+          <th>Hospital</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let maintenance of maintenanceList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ maintenance.scheduledDate | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ maintenance.equipment?.name }}</td>
+          <td>{{ maintenance.equipment?.hospital?.name }}</td>
+          <td>
+            <div class="d-flex justify-content-between">
+              <div class="form-group me-2">
+                <label for="completionDate-{{ i }}">Completion Date</label>
+                <input id="completionDate-{{ i }}" type="date" [value]="maintenance.completedDate | date: 'yyyy-MM-dd'"
+                  (change)="updateCompletionDate(maintenance, $event)" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="status-{{ i }}">Status</label>
+                <select id="status-{{ i }}" [value]="maintenance.status" (change)="updateStatus(maintenance, $event)"
+                  class="form-control">
+                  <option value="Pending">Pending</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+
+
+
+<!-- 
+<div class="cont">
+  <div class="nav-section">
+    <button class="back-btn" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+    <h3 class="nav-title">MAINTENANCE LIST</h3>
+  </div>
+ 
+  <div *ngIf="showError" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+ 
+  <div *ngIf="showMessage" class="alert alert-success">
+    {{ responseMessage }}
+  </div>
+ 
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Serial No.</th>
+          <th>Scheduled Date</th>
+          <th>Requested Equipment</th>
+          <th>Hospital</th>
+          <th>Completion Date</th>
+          <th class="text-center">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let maintenance of maintenanceList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ maintenance.scheduledDate | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ maintenance.equipment?.name }}</td>
+          <td>{{ maintenance.equipment?.hospital?.name }}</td>
+          <td>{{ maintenance.completedDate | date: 'yyyy-MM-dd' }}</td>
+          <td>
+            <div class="form-group">
+              <select name="dropdown"
+                [value]="maintenance.status"
+                (change)="updateStatus(maintenance, $event)"
+                class="form-control status-select"
+                [ngClass]="{
+                  'status-pending': maintenance.status === 'Pending',
+                  'status-progress': maintenance.status === 'In Progress',
+                  'status-completed': maintenance.status === 'Completed'
+                }">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  -->
+
+
+
+  <div class="cont">
+    <div class="nav-section">
+      <button class="back-btn" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+      <h3 class="nav-title">MAINTENANCE LIST</h3>
+    </div>
+   
+    <div *ngIf="showError" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+   
+    <div *ngIf="showMessage" class="alert alert-success">
+      {{ responseMessage }}
+    </div>
+   
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Scheduled Date</th>
+            <th>Requested Equipment</th>
+            <th>Hospital</th>
+            <th>Completion Date</th>
+            <th class="text-center">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let maintenance of maintenanceList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ maintenance.scheduledDate | date: 'yyyy-MM-dd' }}</td>
+            <td>{{ maintenance.equipment?.name }}</td>
+            <td>{{ maintenance.equipment?.hospital?.name }}</td>
+            <td>{{ maintenance.completedDate | date: 'yyyy-MM-dd' }}</td>
+            <td>
+              <div class="form-group">
+                <select name="dropdown"
+                  [value]="maintenance.status"
+                  (change)="updateStatus(maintenance, $event)"
+                  class="form-control status-select"
+                  [ngClass]="{
+                    'status-pending': maintenance.status === 'Pending',
+                    'status-progress': maintenance.status === 'In Progress',
+                    'status-completed': maintenance.status === 'Completed'
+                  }"
+                  [disabled]="maintenance.status === 'Completed'">
+                  <option value="Pending">Pending</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

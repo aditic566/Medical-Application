@@ -1,0 +1,256 @@
+// .d-flex {
+//     display: flex;
+//     justify-content: space-between;
+//   }
+
+//   .form-group {
+//     flex: 1;
+//   }
+
+//   .me-2 {
+//     margin-right: 10px;
+//   }
+
+//   .text-center {
+//     text-align: center;
+//   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cont {
+  background: #f8fafc;
+  height: 100vh;
+}
+
+.nav-section {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+}
+
+.back-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #f1f5f9;
+    color: #1557b0;
+  }
+}
+
+.nav-title {
+  color: #2d3748;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-left: 350px;
+  background: linear-gradient(45deg, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.table-responsive {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    background: #f8fafc;
+    color: #2d3748;
+    font-weight: 600;
+    font-size: large;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+  }
+}
+
+// Dropdown Styles
+.form-group {
+  position: relative;
+  width: 200px;
+  margin: 0 auto;
+
+  &::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #64748b;
+    font-size: 12px;
+  }
+}
+
+select.form-control {
+  width: 100%;
+  padding: 0.75rem 2rem 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 0.95rem;
+  color: #2d3748;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #cbd5e0;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+  }
+
+  option {
+    padding: 0.5rem;
+    background-color: white;
+    color: #2d3748;
+
+    &:hover {
+      background-color: #f7fafc;
+    }
+  }
+}
+
+// Alert Styles
+.alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+
+  &.alert-danger {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+  }
+
+  &.alert-success {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #86efac;
+  }
+}
+
+.status-select {
+  width: 100%;
+  padding: 0.75rem 2rem 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &.status-pending {
+    background-color: #FEF2F2;
+    color: #DC2626;
+    border-color: #FCA5A5;
+  }
+
+  &.status-progress {
+    background-color: #FEF3C7;
+    color: #D97706;
+    border-color: #FCD34D;
+  }
+
+  &.status-completed {
+    background-color: #F0FDF4;
+    color: #16A34A;
+    border-color: #86EFAC;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+  }
+
+  option {
+    padding: 0.8rem;
+    background-color: white;
+    color: #2d3748;
+    font-weight: 500;
+
+    &:hover {
+      background-color: #f7fafc;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .nav-section {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .table {
+
+    th,
+    td {
+      padding: 0.75rem;
+    }
+  }
+}
+
+
+select[disabled] {
+  cursor: not-allowed;
+}
