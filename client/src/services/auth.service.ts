@@ -30,7 +30,6 @@ export class AuthService {
     localStorage.setItem('role', role);
   }
 
-
   get getRole(): string | null {
     return localStorage.getItem('role');
   }

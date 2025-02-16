@@ -13,7 +13,6 @@ export class HttpService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
