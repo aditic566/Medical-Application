@@ -1,1 +1,70 @@
-//todo: complete missing code..
+
+
+
+<div class="cont">
+  <div class="nav-section">
+    <button class="back-btn" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+    <h3 class="nav-title">EQUIPMENT ORDERS</h3>
+  </div>
+
+  <div *ngIf="showError" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="showMessage" class="alert alert-success">
+    {{ responseMessage }}
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Equipment</th>
+          <th>Hospital</th>
+          <th>Quantity</th>
+          <th>Order Date</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orderList, let i=index">
+          <td>{{ i+1 }}</td>
+          <td>{{ order.equipment?.name }}</td>
+          <td>{{ order.equipment?.hospital?.name }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>{{ order.orderDate | date }}</td>
+          <td>{{ order.equipment.description }}</td>
+          <td>
+            <span class="status-badge" [ngClass]="order.status.toLowerCase()">
+              {{ order.status }}
+            </span>
+          </td>
+          <td>
+            <div class="form-group">
+              <select [disabled]="order.status === 'DELIVERED'" [(ngModel)]="order.status" (change)="update(order)"
+                class="form-control status-select" [ngClass]="{
+                    'status-processing': order.status === 'PROCESSING',
+                    'status-shipped': order.status === 'SHIPPED',
+                    'status-delivered': order.status === 'DELIVERED'
+                  }">
+                <option value="" disabled selected hidden>Update Status</option>
+                <option value="PROCESSING">Processing</option>
+                <option value="SHIPPED">Shipped</option>
+                <option value="DELIVERED">Delivered</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="orderList.length === 0" class="no-orders">
+    <p>No orders found</p>
+  </div>
+</div>

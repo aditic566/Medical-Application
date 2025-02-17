@@ -1,6 +1,7 @@
+
 package com.wecp.medicalequipmentandtrackingsystem.controller;
-
-
+ 
+ 
 import com.wecp.medicalequipmentandtrackingsystem.dto.LoginRequest;
 import com.wecp.medicalequipmentandtrackingsystem.dto.LoginResponse;
 import com.wecp.medicalequipmentandtrackingsystem.entitiy.User;
@@ -13,23 +14,66 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
-
+import org.springframework.security.crypto.password.PasswordEncoder;
+ 
+ 
+ 
+ 
+ 
+@RestController
 public class RegisterAndLoginController {
-
-
+    @Autowired
+    private UserService userService;
+ 
+    @Autowired
+    private AuthenticationManager authenticationManager;
+ 
+    @Autowired
+    JwtUtil jwtUtil;
+ 
     @PostMapping("/api/user/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
-        // register user and return the registered user with status code 201 created
+   
+        User registeredUser = userService.registerUser(user);
+        return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
-
+ 
     @PostMapping("/api/user/login")
-    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
-        // login user and return the login response with status code 200 ok
-        // if authentication fails, return status code 401 unauthorized
+    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest user) {
+     
+        try{
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+            System.out.println("in try");
+        } catch(AuthenticationException e) {
+             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED , "Invalid username or password" ,e);
+        }
+        final UserDetails userDetails = userService.loadUserByUsername(user.getUsername());
+        
+        User foundUser = userService.getUserByUsername(user.getUsername());
+ 
+        final String token = jwtUtil.generateToken(user.getUsername());
+        System.out.println(token);
+       LoginResponse loginResponse =  new LoginResponse(token,foundUser.getUsername(),foundUser.getEmail(),foundUser.getRole());
+       return ResponseEntity.ok(loginResponse);
+     
+    }
+ 
+    @GetMapping("/api/user/check-email")
+    public ResponseEntity<Boolean> checkEmailExists(@RequestParam String email) {
+        boolean exists = userService.checkEmailExists(email);
+        return ResponseEntity.ok(exists);
+    }
+ 
+    @GetMapping("/api/user/check-username")
+    public ResponseEntity<Boolean> checkUsernameExists(@RequestParam String username) {
+        boolean exists = userService.checkUsernameExists(username);
+        return ResponseEntity.ok(exists);
     }
 }
+ 

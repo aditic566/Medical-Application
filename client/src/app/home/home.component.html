@@ -1,0 +1,102 @@
+<nav class="navbar">
+    <div class="nav-links">
+        <a style="cursor: pointer;" (click)="scrollToSection('home')">Home</a>
+        <a style="cursor: pointer;" (click)="scrollToSection('about')">About Us</a>
+        <a style="cursor: pointer;" (click)="scrollToSection('contact')">Contact Us</a>
+    </div>
+    <div class="auth-buttons">
+        <button routerLink="/login">Sign In</button>
+        <button routerLink="/registration">Sign Up</button>
+    </div>
+</nav>
+
+<section id="home" class="hero-section">
+    <div class="hero-content">
+        <h1 style="font-size: 60px;">Welcome to CareSync</h1>
+        <p class="tagline" style="font-size: large;">Your Trusted Healthcare Partner</p>
+        <div class="description" style="font-size: large;">
+            <p>Revolutionizing healthcare management through innovative solutions.</p>
+            <p>Connecting hospitals, technicians, and suppliers in one seamless platform.</p>
+        </div>
+    </div>
+</section>
+
+<section class="slideshow-section">
+    <div class="slideshow-container">
+        <div class="slide" *ngFor="let slide of slides; let i = index" [class.active]="currentSlide === i">
+            <div class="slide-content">
+                <img [src]="slide.image" [alt]="slide.title">
+                <div class="slide-text">
+                    <h3>{{slide.title}}</h3>
+                    <p>{{slide.description}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-controls">
+            <div class="dot" *ngFor="let slide of slides; let i = index" [class.active]="currentSlide === i"
+                (click)="setSlide(i)"></div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about-section">
+    <h2>Our Team</h2>
+    <div class="team-cards">
+        <div class="team-card" *ngFor="let member of teamMembers">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3 style="text-align: center;">{{member.name}}</h3>
+                    <p style="text-align: center;">{{member.role}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <h2 style="text-align: center;font-size: xx-large;margin-bottom: 20px;">Get in Touch</h2>
+    <div class="contact-container">
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.7862000460873!2d73.02756847500831!3d19.076625682110967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c13eb1098f3d%3A0x19689a0de6435f8e!2sLTIMindtree!5e0!3m2!1sen!2sin!4v1709636547043!5m2!1sen!2sin"
+                allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+
+        <div class="contact-form-container">
+            <h3>Contact Us</h3>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" rows="1"></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>123 Healthcare Avenue, Medical District</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <!-- <p>contact@caresync.com</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-bottom">
+        <p>&copy; 2024 CareSync. All rights reserved.</p>
+    </div>
+</footer>
